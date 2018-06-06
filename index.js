@@ -21,4 +21,13 @@ function deepestCommonFolder ( paths ) {
 	return path.normalize ( base )
 }
 
-module.exports = deepestCommonFolder
+function validate ( paths, callback ) {
+	if ( !Array.isArray ( paths ) ) {
+		throw "Expecting array of paths to be passed"
+	}
+	else {
+		return callback ( paths )
+	}
+}
+
+module.exports = paths => validate ( paths, deepestCommonFolder )
